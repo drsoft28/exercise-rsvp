@@ -18,7 +18,7 @@
     <h5 class="card-title">You are invited to our opening</h5>
     <p class="type-description">{!! $invitation_master->card_type->typeDescription !!}</p>
     <div class="dropdown-divider"></div>
-    <form method="post" action="/save">
+    <form method="post" action="/{{$code}}/save">
       @csrf
     <h6 class="text-center">Please update following information</h6>
     
@@ -74,13 +74,13 @@
             <td>{{$participant->relationship}}<td>
             <td><input type="text" class="form-control input-text @error('relationshipname'.$participant->id) is-invalid @enderror" value="{{old('relationshipname'.$participant->id,$participant->relationshipName)}}" name="{{'relationshipname'.$participant->id}}" id="relationshipname{{$participant->id}}" placeholder="Enter Name"><td>
               <td>
-                <input class="form-check-input @error('participation'.$participant->id) is-invalid @enderror" type="checkbox" {{in_array(old('participation'.$participant->id,$participant->participation),[1,'on'])?'checked':null}} name="{{'participation'.$participant->id}}" id="{{'participation'.$participant->id}}" >
+                <input class="form-check-input @error('participation'.$participant->id) is-invalid @enderror" type="checkbox" {{in_array(old('participation'.$participant->id,$participant->relationshipParticipation==1?'on':null),[1,'on'])?'checked':null}} name="{{'participation'.$participant->id}}" id="{{'participation'.$participant->id}}" >
                 @error('participation'.$participant->id)
                   <div class="invalid-feedback">{{ $message }}</div>
               @enderror
                 <td>
                 <td>
-                  <input class="form-check-input @error('vaccination'.$participant->id) is-invalid @enderror" type="checkbox" {{in_array(old('vaccination'.$participant->id,$participant->Vaccination),[1,'on'])?'checked':null}} name="{{'vaccination'.$participant->id}}" id="{{'vaccination'.$participant->id}}" >
+                  <input class="form-check-input @error('vaccination'.$participant->id) is-invalid @enderror" type="checkbox" {{in_array(old('vaccination'.$participant->id,$participant->relationshipVaccination==1?'on':null),[1,'on'])?'checked':null}} name="{{'vaccination'.$participant->id}}" id="{{'vaccination'.$participant->id}}" >
                   @error('vaccination'.$participant->id)
                   <div class="invalid-feedback">{{ $message }}</div>
               @enderror

@@ -37,12 +37,12 @@ class HomeController extends Controller
      
      if(!$invitation_master) 
      return  redirect('/error')->with('card_code', $code);;
-        session(['CardCode' => $code]);
+       // session(['CardCode' => $code]);
         return  redirect('/'.$code);
     }
     public function logout()
     {
-        session()->flush();
+       // session()->flush();
         return  redirect('/');
     }
     public function error()
@@ -52,16 +52,16 @@ class HomeController extends Controller
     }
     public function index($code)
     {
-        if(!session()->has('CardCode')) return  redirect('/');
+       // if(!session()->has('CardCode')) return  redirect('/');
      $invitation_master= InvitationMaster::whereRaw("cardCode=?",[$code])->first();
      if(!$invitation_master) 
      return  redirect('/error');
      $invitation_master->load('participants','card_type');
-        return view('invitation',compact('invitation_master'));
+        return view('invitation',compact('invitation_master','code'));
     }
-    public function save(){
-        if(!session()->has('CardCode')) return  redirect('/');
-        $code = session()->get('CardCode');
+    public function save($code){
+        //if(!session()->has('CardCode')) return  redirect('/');
+        //$code = session()->get('CardCode');
         $invitation_master= InvitationMaster::whereRaw("cardCode=?",[$code])->first();
      if(!$invitation_master) 
      return  redirect('/error');
@@ -86,8 +86,8 @@ class HomeController extends Controller
     
          $participant_update =InvitationParticipant::find($participant->id);
         $participant_update->relationshipName= request('relationshipname'.$participant->id);
-        $participant_update->relationshipParticipation= request('vaccination'.$participant->id)?1:0;
-        $participant_update->relationshipVaccination= request('participation'.$participant->id)?1:0;
+        $participant_update->relationshipParticipation= request('participation'.$participant->id)?1:0;
+        $participant_update->relationshipVaccination= request('vaccination'.$participant->id)?1:0;
         $participant_update->save();
         
     }

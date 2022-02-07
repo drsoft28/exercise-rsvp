@@ -20,8 +20,9 @@ Route::get('/', function () {
 //Auth::routes();
 
 
-Route::post('/save', 'HomeController@save')->name('save');
+
 Route::post('/login', 'HomeController@login')->name('login');
 Route::post('/logout', 'HomeController@logout')->name('logout');
 Route::get('/error', 'HomeController@error')->name('error');
 Route::get('/{code}', 'HomeController@index')->name('home');//->where('code', '[0-9]+');;
+Route::post('/{code}/save', 'HomeController@save')->name('save');
