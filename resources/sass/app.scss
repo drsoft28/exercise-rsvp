@@ -1,0 +1,86 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+html {
+    height: 100%;
+}
+
+body{
+    background-color: rgb(224, 133, 175);
+    height: 100%;
+}
+main{
+   
+    height: 100%;
+}
+main>footer{
+    bottom: 0px;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+}
+.card-info,.card-login{
+    background-color: transparent;
+    border: unset !important;
+    
+}
+.card-login>.card-body>.card-title{
+    font-weight: bolder;
+    font-size: 48px;
+}
+.card-login>.card-body>.card-subtitle,footer{
+    font-weight: bolder;
+    font-size: 20px;
+}
+.type-description{
+    padding-left: 32px;
+}
+.form-group.form-group-inline {
+    display: inline-block;
+    text-align: center;
+    margin-right: 15px;
+  }
+  .form-group.form-group-inline>label {
+    display: block;
+    font-size: 14px;
+  }
+  .card-info .input-text{
+    background-color: white;
+    border: unset;
+    border-radius: unset;
+    padding: 3px;
+    margin-top: 8px;
+  }
+  .card-info table{
+      text-align: center;
+      font-size: 12px;
+  }
+.card-info input[type=checkbox]{
+  color:black;
+        border: 1px solid;
+        height: 20px;
+        width: 18px;
+        background: transparent;
+}
+.img-card-type {
+    margin: 27px auto;
+    background-size: cover;
+    background-position: center;
+    height: 100px;
+    width: 70%;
+}
+.form-login input.form-control{
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    display: inline;
+    font-weight: bolder;
+    font-size: 29px;
+
+}
